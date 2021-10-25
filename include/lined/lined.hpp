@@ -113,7 +113,7 @@ public:
         }
     }
 
-    line getline(std::string_view prompt) { return getline(prompt); }
+    line getline(std::string_view prompt) { return getline(styled_string(prompt)); }
 
     std::optional<line> getline_nonblocking(const styled_string& prompt) {
         if (!m_line) {
@@ -143,7 +143,7 @@ public:
         return {};
     }
 
-    line getline_nonblocking(std::string_view prompt) { return getline_nonblocking(prompt); }
+    std::optional<line> getline_nonblocking(std::string_view prompt) { return getline_nonblocking(styled_string(prompt)); }
 
     void cancel() {
         uint64_t to_write = 1;
